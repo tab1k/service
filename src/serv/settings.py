@@ -31,14 +31,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    # APPs
     "clients.apps.ClientsConfig",
     "services.apps.ServicesConfig",
+
+    # APIs
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -123,3 +130,20 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LOGGING = {
+    'version' : 1,
+    'handlers' : {
+        'console' : {
+            'class' : 'logging.StreamHandler',
+        }
+    },
+    'loggers' : {
+        'django.db.backends' : {
+            'handlers': ['console'],
+            'level' : 'DEBUG',
+        }
+    }
+}
+
